@@ -1,0 +1,12 @@
+{application, epatch,
+ [
+  {description, ""},
+  {vsn, "1"},
+  {registered, []},
+  {applications, [
+                  kernel,
+                  stdlib
+                 ]},
+  {mod, { epatch_app, []}},
+  {env, []}
+ ]}.
