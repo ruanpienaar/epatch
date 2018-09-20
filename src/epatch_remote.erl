@@ -1,5 +1,6 @@
 -module(epatch_remote).
 -export([
+    beam_location/1,
     patch/1,
     backup_mod/1
 ]).
@@ -9,6 +10,10 @@ patch(Beam) ->
     %%       check if the new and old compiled beams share the same options ...
     ok = backup_mod(Beam),
     ok.
+
+beam_location(Beam) ->
+    [LoadedBeamFilePath] = [ BeamLocation || {B, BeamLocation} <- code:all_loaded(), Beam == B ],
+    LoadedBeamFilePath.
 
 backup_mod(Beam) ->
     io:format("Going to backup mod ~p\n", [Beam]),
